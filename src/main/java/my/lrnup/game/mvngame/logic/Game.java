@@ -42,8 +42,6 @@ public class Game {
                     i = i + 1;
                 }
             }
-
-
         }
         return loseNameArray;
     }
