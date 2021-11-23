@@ -17,6 +17,38 @@ public class Game {
 
     }
 
+    public static String[] nameArray(String[] nameSpeed) {
+        int loseNumber = 0;
+        for (String line : nameSpeed) {
+            String[] parts = line.split(" ");
+            int speed = Integer.parseInt(parts[1]);
+            if (!isGreen) {
+                if (speed <= maxSpeed) {
+                    loseNumber = loseNumber + 1;
+                }
+            }
+        }
+
+        String loseNameArray[] = new String[loseNumber];
+        int i = 0;
+        for (String line1 : nameSpeed) {
+            String[] parts1 = line1.split(" ");
+
+            String name1 = parts1[0];
+            int speed1 = Integer.parseInt(parts1[1]);
+            if (!isGreen) {
+                if (speed1 <= maxSpeed) {
+                    loseNameArray[i] = name1;
+                    i = i + 1;
+                }
+            }
+
+
+        }
+        return loseNameArray;
+    }
+
+
     public static int[] loseArray(int[] speed) {
         int loseNumber = 0;
         for (int i = 0; i < speed.length; i++) {
@@ -69,12 +101,19 @@ public class Game {
     }
 
     public static void main(String[] args) {
-        isGreen = true;
+        isGreen = false;
         maxSpeed = 10;
-        int[] speeds = {0,-11,10,11,50,100};
+        String[] nameSpeed = {"Bob 0", "Jack -11", "Tolyan 10", "Mikhalych 11", "Stepa 50", "VTB 100"};
+        int[] speeds = {0, -11, 10, 11, 50, 100};
         int losecount = outCount(speeds);
         int[] lose = loseArray(speeds);
         int[] won = wonArray(speeds);
+        String[] loseNames = nameArray(nameSpeed);
+        System.out.println("Массив имён выбывающих: ");
+        for (int i = 0; i < loseNames.length; i++) {
+            System.out.println(loseNames[i]);
+        }
+        System.out.println();
         System.out.println("Количество выбывших = " + losecount);
         System.out.println();
         System.out.println("Массив из скоростей выбывающих: ");

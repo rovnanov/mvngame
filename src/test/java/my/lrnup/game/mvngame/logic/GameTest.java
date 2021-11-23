@@ -77,5 +77,27 @@ public class GameTest {
 
         Assertions.assertArrayEquals(expected,actual, "Метод wonArray работает корректно при красном свете");
     }
+    @Test
+    public void nameArrayWorksWithGreenLight() {
+        String[] speed = {"Собака 10","Кошка 0"};
+        Game.isGreen = true;
+        Game.maxSpeed = 10;
+
+        String[] expected = {};
+        String[] actual = Game.nameArray(speed);
+        Assertions.assertArrayEquals(expected,actual, "Метод nameArray работает корректно при зеленом свете");
+
+    }
+    @Test
+    public void nameArrayWorksWithRedLight() {
+        String[] speed = {"Собака 11","Кошка 0"};
+        Game.isGreen = false;
+        Game.maxSpeed = 10;
+
+        String[] expected = {"Кошка"};
+        String[] actual = Game.nameArray(speed);
+        Assertions.assertArrayEquals(expected,actual, "Метод nameArray работает корректно при красном свете");
+
+    }
 
 }
