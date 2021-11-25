@@ -33,7 +33,6 @@ public class Game {
         int i = 0;
         for (String line1 : nameSpeed) {
             String[] parts1 = line1.split(" ");
-
             String name1 = parts1[0];
             int speed1 = Integer.parseInt(parts1[1]);
             if (!isGreen) {
