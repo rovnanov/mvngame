@@ -2,26 +2,37 @@ package my.lrnup.game.mvngame.logic;
 
 public class Game {
     public boolean isGreen;
-    public int maxSpeed;
+    public int speed;
 
-    public boolean getIsGreen() {
+    public Game(boolean isGreen, int maxSpeed) {
+    }
+
+    public boolean isGreen() {
         return isGreen;
     }
 
-    public void setIsGreen(boolean isGreen) {
-        this.isGreen = isGreen;
+    public void setGreen(boolean green) {
+        isGreen = green;
     }
 
-    public boolean isFailed(int speed) {
-        SpeedyGame speedyGame = new SpeedyGame(false, 10);
-        if (!isGreen) {
-            if (speed > speedyGame.maxSpeed) return true;
-        }
-        return false;
+    public int getSpeed() {
+        return speed;
     }
-    public static void main(String[] args){
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    boolean isFailed(int speed) {
+        if (!isGreen) {
+            return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
         Movable slowPlayer = new ConstantPlayer(10);
-        Movable fastPlayer = new FastPlayer(10,5);
+        Movable fastPlayer = new FastPlayer(10, 5);
         slowPlayer.getSpeed();
         System.out.println();
         fastPlayer.getSpeed();

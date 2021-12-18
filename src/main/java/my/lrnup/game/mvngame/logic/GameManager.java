@@ -1,18 +1,9 @@
 package my.lrnup.game.mvngame.logic;
 
-public class GameManager extends SpeedyGame {
+public class GameManager extends Game {
 
     public GameManager(boolean isGreen, int maxSpeed) {
         super(isGreen, maxSpeed);
-    }
-
-    @Override
-    public boolean isFailed(int speed) {
-        SpeedyGame speedyGame = new SpeedyGame(false, 10);
-        if (!isGreen) {
-            if (speed > speedyGame.maxSpeed) return true;
-        }
-        return false;
     }
 
     public int roundSurvived(int[] speeds) {

@@ -7,22 +7,20 @@ public class GameTest {
     @Test
     public void PlayerLoseTest() {
         SpeedyGame speedyGame = new SpeedyGame(false, 10);
-        Game game = new Game();
         int speed = 11;
 
         boolean expected = true;
-        boolean actual = game.isFailed(speed);
+        boolean actual = speedyGame.isFailed(speed);
         Assertions.assertTrue(actual, "Игрок проиграл");
     }
 
     @Test
     public void PlayerWonTest() {
         SpeedyGame speedyGame = new SpeedyGame(false, 10);
-        Game game = new Game();
         int speed = 10;
 
         boolean expected = false;
-        boolean actual = game.isFailed(speed);
+        boolean actual = speedyGame.isFailed(speed);
         Assertions.assertFalse(actual, "Игрок выйграл");
     }
 
@@ -74,7 +72,7 @@ public class GameTest {
 
         int expected = 1;
         int actual = gameManager.loser(p1, p2, gameManager, 5);
-        Assertions.assertEquals(expected,actual, "Игрок 2 проиграл игру раньше");
+        Assertions.assertEquals(expected, actual, "Игрок 2 проиграл игру раньше");
     }
 
     @Test
@@ -85,7 +83,7 @@ public class GameTest {
 
         int expected = -1;
         int actual = gameManager.loser(p1, p2, gameManager, 5);
-        Assertions.assertEquals(expected,actual, "Игрок 1 проиграл игру раньше");
+        Assertions.assertEquals(expected, actual, "Игрок 1 проиграл игру раньше");
     }
 
     @Test
@@ -96,6 +94,6 @@ public class GameTest {
 
         int expected = 0;
         int actual = gameManager.loser(p1, p2, gameManager, 5);
-        Assertions.assertEquals(expected,actual, "Никто не проиграл игру раньше");
+        Assertions.assertEquals(expected, actual, "Никто не проиграл игру раньше");
     }
 }
