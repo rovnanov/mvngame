@@ -4,60 +4,43 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class GameTest {
-    @Test
-    public void PlayerLoseTest(){
-        SpeedyGame speedyGame = new SpeedyGame(false, 10);
-        Game game = new Game();
-        int speed = 11;
+    Game game = new Game(false);
+    SpeedyGame speedyGame = new SpeedyGame(false,10);
+    GameManager manager = new GameManager(game);
+    GameManager speedyManager = new GameManager(speedyGame);
 
-        boolean expected = true;
-        boolean actual = game.isFailed(speed);
-        Assertions.assertTrue(actual,"Игрок проиграл");
+    @Test
+    public void gameTest(){
+        Assertions.assertFalse(game.isFailed(10));
     }
     @Test
-    public void PlayerWonTest(){
-        SpeedyGame speedyGame = new SpeedyGame(false, 10);
-        Game game = new Game();
-        int speed = 10;
-
-        boolean expected = false;
-        boolean actual = game.isFailed(speed);
-        Assertions.assertFalse(actual, "Игрок выйграл");
+    public void gameTestGreenLight(){
+        game.setGreen(true);
+        Assertions.assertTrue(game.isFailed(10));
     }
     @Test
-    public void GameManagerPlayerWonTest(){
-        int speed = 12;
-        GameManager gameManager = new GameManager(false,10);
-
-        boolean expected = true;
-        boolean actual = gameManager.isFailed(speed);
-        Assertions.assertTrue(actual, "Игрок успешно проиграл в Gamemanager");
+    public void speedyGameTest(){
+        Assertions.assertTrue(speedyGame.isFailed(11));
     }
     @Test
-    public void GameManagerPlayerLoseTest(){
-        int speed = 9;
-        GameManager gameManager = new GameManager(false,10);
-
-        boolean expected = false;
-        boolean actual = gameManager.isFailed(speed);
-        Assertions.assertFalse(actual, "Игрок успешно выйграл в Gamemanager");
+    public void speedyGameTest2(){
+        speedyGame.setMaxSpeed(5);
+        speedyGame.setGreen(true);
+        Assertions.assertTrue(speedyGame.isFailed(10));
     }
     @Test
-    public void GameManagerRoundSurvivedTest(){
-        int[] speeds = {5,6,10,11,15,16};
-        GameManager gameManager = new GameManager(false,10);
-
-        int expected = 3;
-        int actual = gameManager.roundSurvived(speeds);
-        Assertions.assertEquals(expected, actual, "Правильный расчет кол-ва раундов при красном свете");
+    public void managerTest(){
+        int[] speeds = new int[]{0,10,0,20};
+        int expected = 2;
+        int actual = manager.roundSurvived(speeds);
+        Assertions.assertEquals(expected,actual);
     }
     @Test
-    public void GameManagerRoundSurvivedTest2(){
-        int[] speeds = {5,6,10,11,15,16};
-        GameManager gameManager = new GameManager(true,10);
-
-        int expected = 6;
-        int actual = gameManager.roundSurvived(speeds);
-        Assertions.assertEquals(expected, actual, "Правильный расчет кол-ва раундов при зеленом свете");
+    public void managerTest2(){
+        game.setGreen(true);
+        int[] speeds = new int[]{0,10,0,20};
+        int expected = 4;
+        int actual = manager.roundSurvived(speeds);
+        Assertions.assertEquals(expected,actual);
     }
 }

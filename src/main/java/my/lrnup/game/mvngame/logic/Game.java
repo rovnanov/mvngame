@@ -2,21 +2,21 @@ package my.lrnup.game.mvngame.logic;
 
 public class Game {
     public boolean isGreen;
-    public int maxSpeed;
 
-    public boolean getIsGreen() {
+    public Game(boolean isGreen){
+        this.isGreen = isGreen;
+    }
+    public boolean isGreen() {
         return isGreen;
     }
 
-    public void setIsGreen(boolean isGreen) {
-        this.isGreen = isGreen;
+    public void setGreen(boolean green) {
+        isGreen = green;
     }
-
-    public boolean isFailed(int speed) {
-        SpeedyGame speedyGame = new SpeedyGame(false, 10);
+    boolean isFailed(int speed) {
         if (!isGreen) {
-            if (speed > speedyGame.maxSpeed) return true;
+            return false;
         }
-        return false;
+        return true;
     }
 }
