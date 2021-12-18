@@ -4,17 +4,26 @@ public class Game {
     public boolean isGreen;
     public int speed;
 
-    public boolean getIsGreen() {
+    public boolean isGreen() {
         return isGreen;
     }
-    public void setIsGreen(boolean isGreen) {
-       this.isGreen = isGreen;
+
+    public void setGreen(boolean green) {
+        isGreen = green;
     }
-    public boolean isFailed(int speed){
-        SpeedyGame speedyGame = new SpeedyGame(false,10);
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    boolean isFailed(int speed){
         if(!isGreen){
-            if(speed > speedyGame.maxSpeed) return true;
+            return false;
         }
-        return false;
+        return true;
     }
 }
