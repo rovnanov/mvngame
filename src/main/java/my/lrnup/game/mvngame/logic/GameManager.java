@@ -12,8 +12,8 @@ public class GameManager {
         for (int i = 0; i < speeds.length; i++) {
             if (!game.isGreen) {
                 if (speeds[i] > 0) {
-                    count = count;
-                } else count = count + 1;
+                    count = count + 1;
+                } else count = count;
             } else count = speeds.length;
         }
         return count;
