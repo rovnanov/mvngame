@@ -11,12 +11,12 @@ public class GameTest {
 
     @Test
     public void gameTest(){
-        Assertions.assertFalse(game.isFailed(10));
+        Assertions.assertTrue(game.isFailed(10));
     }
     @Test
     public void gameTestGreenLight(){
         game.setGreen(true);
-        Assertions.assertTrue(game.isFailed(10));
+        Assertions.assertFalse(game.isFailed(10));
     }
     @Test
     public void speedyGameTest(){
@@ -26,7 +26,7 @@ public class GameTest {
     public void speedyGameTest2(){
         speedyGame.setMaxSpeed(5);
         speedyGame.setGreen(true);
-        Assertions.assertTrue(speedyGame.isFailed(10));
+        Assertions.assertFalse(speedyGame.isFailed(10));
     }
     @Test
     public void managerTest(){

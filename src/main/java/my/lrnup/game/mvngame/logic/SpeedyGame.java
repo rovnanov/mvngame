@@ -20,6 +20,6 @@ public class SpeedyGame extends Game {
         if(!isGreen){
             return speed > maxSpeed;
         }
-        return true;
+        return false;
     }
 }
