@@ -5,8 +5,16 @@ import org.junit.jupiter.api.Test;
 
 public class GameTest {
     @Test
+    public void GameTest(){
+        Game game = new Game(false);
+        Game game2 = new Game(true);
+        Assertions.assertTrue(game.isFailed(1));
+        Assertions.assertFalse(game.isFailed(0));
+        Assertions.assertFalse(game2.isFailed(10));
+    }
+    @Test
     public void PlayerLoseTest(){
-        SpeedyGame speedyGame = new SpeedyGame(false, 10);
+        Game speedyGame = new SpeedyGame(false, 10);
         int speed = 11;
 
         boolean expected = true;
@@ -15,7 +23,7 @@ public class GameTest {
     }
     @Test
     public void PlayerWonTest(){
-        SpeedyGame speedyGame = new SpeedyGame(false, 10);
+        Game speedyGame = new SpeedyGame(false, 10);
         int speed = 10;
 
         boolean expected = false;

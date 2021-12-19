@@ -11,7 +11,7 @@ public class SpeedyGame extends Game {
     }
 
     public SpeedyGame(boolean isGreen, int maxSpeed) {
-        this.isGreen = isGreen;
+        super(isGreen);
         this.maxSpeed = maxSpeed;
     }
 
@@ -20,6 +20,6 @@ public class SpeedyGame extends Game {
         if(!isGreen){
             return speed > maxSpeed;
         }
-        return true;
+        return false;
     }
 }
