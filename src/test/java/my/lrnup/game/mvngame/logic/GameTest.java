@@ -43,4 +43,30 @@ public class GameTest {
         int actual = manager.roundSurvived(speeds);
         Assertions.assertEquals(expected,actual);
     }
+    @Test
+    public void FastPlayertest(){
+        Movable player = new FastPlayer(10,5);
+        System.out.println(player.getSpeed());
+        System.out.println(player.getSpeed());
+        System.out.println(player.getSpeed());
+        System.out.println(player.getSpeed());
+    }
+    @Test
+    public void loserTestp2Won(){
+        Movable p1 = new FastPlayer(1,2);
+        Movable p2 = new FastPlayer(1,4);
+        Assertions.assertEquals(1,speedyManager.loser(p1,p2,speedyGame,10));
+    }
+    @Test
+    public void loserTestp1Won(){
+        Movable p1 = new FastPlayer(1,6);
+        Movable p2 = new FastPlayer(1,4);
+        Assertions.assertEquals(-1,speedyManager.loser(p1,p2,speedyGame,10));
+    }
+    @Test
+    public void loserTestNobodyWon(){
+        Movable p1 = new FastPlayer(1,1);
+        Movable p2 = new FastPlayer(1,1);
+        Assertions.assertEquals(0,speedyManager.loser(p1,p2,speedyGame,5));
+    }
 }

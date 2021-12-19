@@ -6,6 +6,7 @@ public class Game {
     public Game(boolean isGreen){
         this.isGreen = isGreen;
     }
+
     public boolean isGreen() {
         return isGreen;
     }
